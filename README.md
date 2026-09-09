@@ -56,7 +56,7 @@ It originally assigned the field engineer for everybody. That skipped the one pe
 
 ## The clock
 
-<img src="https://cdn.jsdelivr.net/gh/Claytonee/Technical-Support-System@main/assets/sla-engine.svg" alt="The SLA engine: four priority tiers with hard targets, a critical fault breaching four hours and escalating" width="100%"/>
+<img src="https://cdn.jsdelivr.net/gh/Claytonee/Technical-Support-System@main/assets/sla-clock.svg" alt="The SLA engine: four priority tiers with hard targets, a critical fault breaching four hours and escalating" width="100%"/>
 
 | Priority | Target |
 |---|---|
