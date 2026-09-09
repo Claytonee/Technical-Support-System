@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 90" width="1200" height="90" role="img" aria-label=""><!--(c) 2026 Claytone Curthberth Mhina. Artwork all rights reserved.-->
+<defs>
+<linearGradient id="fbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00085B"/><stop offset="1" stop-color="#00072D"/></linearGradient>
+<linearGradient id="fw1" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#34D399" stop-opacity="0.24"/><stop offset="1" stop-color="#34D399" stop-opacity="0.05"/></linearGradient>
+<linearGradient id="fw2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0E4DFF" stop-opacity="0.34"/><stop offset="1" stop-color="#17D9F9" stop-opacity="0.08"/></linearGradient>
+<clipPath id="fclip"><rect x="0" y="0" width="1200" height="90" rx="14"/></clipPath>
+</defs>
+<g clip-path="url(#fclip)">
+<rect width="1200" height="90" fill="url(#fbg)"/>
+<path fill="url(#fw1)" d="M0 34 Q 150 12 300 34 T 600 34 T 900 34 T 1200 34 T 1500 34 T 1800 34 V 90 H 0 Z"><animateTransform attributeName="transform" type="translate" from="0 0" to="-600 0" dur="12s" repeatCount="indefinite"/></path>
+<path fill="url(#fw2)" d="M0 52 Q 150 32 300 52 T 600 52 T 900 52 T 1200 52 T 1500 52 T 1800 52 V 90 H 0 Z"><animateTransform attributeName="transform" type="translate" from="-600 0" to="0 0" dur="17s" repeatCount="indefinite"/></path>
+<g fill="#EAF7F3"><circle cx="180" cy="20" r="1.1" opacity="0.28"/><circle cx="620" cy="16" r="1" opacity="0.22"/><circle cx="1040" cy="24" r="1.2" opacity="0.26"/></g>
+</g>
+</svg>

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" width="1200" height="280" role="img" aria-label="Technical Support System — production field-support platform for 36 partner schools"><!--(c) 2026 Claytone Curthberth Mhina. Artwork and text all rights reserved.-->
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00072D"/><stop offset="1" stop-color="#00085B"/></linearGradient>
+<linearGradient id="bar" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#34D399"/><stop offset="1" stop-color="#17D9F9"/></linearGradient>
+<radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#0E4DFF" stop-opacity="0.34"/><stop offset="1" stop-color="#0E4DFF" stop-opacity="0"/></radialGradient>
+<radialGradient id="burn" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#F20002" stop-opacity="0.55"/><stop offset="1" stop-color="#F20002" stop-opacity="0"/></radialGradient>
+<linearGradient id="wave1" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#34D399" stop-opacity="0.20"/><stop offset="1" stop-color="#34D399" stop-opacity="0.04"/></linearGradient>
+<linearGradient id="wave2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0E4DFF" stop-opacity="0.30"/><stop offset="1" stop-color="#0E4DFF" stop-opacity="0.06"/></linearGradient>
+<clipPath id="card"><rect x="0" y="0" width="1200" height="280" rx="18"/></clipPath>
+</defs>
+<g clip-path="url(#card)" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+<rect width="1200" height="280" fill="url(#bg)"/>
+<g fill="#EAF7F3"><circle cx="80" cy="34" r="1.2" opacity="0.32"/><circle cx="250" cy="58" r="1" opacity="0.24"/><circle cx="400" cy="24" r="1.3" opacity="0.36"/><circle cx="560" cy="46" r="1" opacity="0.28"/><circle cx="700" cy="22" r="1.2" opacity="0.32"/><circle cx="1150" cy="34" r="1.2" opacity="0.36"/><circle cx="1120" cy="238" r="1" opacity="0.28"/><circle cx="520" cy="244" r="1.1" opacity="0.24"/></g>
+<circle cx="960" cy="140" r="170" fill="url(#glow)"/>
+
+<circle cx="960" cy="140" r="112" fill="none" stroke="#0E4DFF" stroke-width="1.2" stroke-dasharray="4 11" opacity="0.55"><animateTransform attributeName="transform" type="rotate" from="0 960 140" to="360 960 140" dur="90s" repeatCount="indefinite"/></circle>
+<g stroke="#0E4DFF" stroke-width="1.6" opacity="0.5" stroke-linecap="round"><line x1="960" y1="68" x2="960" y2="76"/><line x1="1002" y1="79" x2="998" y2="86"/><line x1="1033" y1="110" x2="1026" y2="114"/><line x1="1044" y1="152" x2="1036" y2="152"/><line x1="1033" y1="194" x2="1026" y2="190"/><line x1="1002" y1="225" x2="998" y2="218"/><line x1="960" y1="236" x2="960" y2="228"/><line x1="918" y1="225" x2="922" y2="218"/><line x1="887" y1="194" x2="894" y2="190"/><line x1="876" y1="152" x2="884" y2="152"/><line x1="887" y1="110" x2="894" y2="114"/><line x1="918" y1="79" x2="922" y2="86"/></g>
+<circle cx="960" cy="140" r="86" fill="none" stroke="#0E4DFF" stroke-width="10" opacity="0.22"/>
+<circle cx="960" cy="140" r="52" fill="url(#burn)" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.80;0.84;0.94;0.99;1" dur="7s" repeatCount="indefinite"/></circle>
+<circle cx="960" cy="140" r="86" fill="none" stroke="#34D399" stroke-width="10" stroke-linecap="round" stroke-dasharray="540.35" stroke-dashoffset="540.35" transform="rotate(-90 960 140)">
+  <animate attributeName="stroke-dashoffset" values="540.35;0;0;540.35" keyTimes="0;0.80;0.97;1" dur="7s" repeatCount="indefinite"/>
+  <animate attributeName="stroke" values="#34D399;#34D399;#F20002;#F20002;#34D399" keyTimes="0;0.62;0.82;0.97;1" dur="7s" repeatCount="indefinite"/>
+</circle>
+<g text-anchor="middle">
+<text x="960" y="128" font-size="12" font-weight="600" letter-spacing="1.8" fill="#5F79C0">CRITICAL</text>
+<text x="960" y="160" font-size="26" font-weight="700" fill="#EAF7F3">&#8804; 2 h</text>
+<text x="960" y="182" font-size="11" fill="#5F79C0">to resolution</text>
+<text x="960" y="258" font-size="13" font-weight="700" letter-spacing="1.6" fill="#F20002" opacity="0">SLA BREACH &#183; ESCALATED<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.82;0.86;0.94;0.99;1" dur="7s" repeatCount="indefinite"/></text>
+</g>
+
+<text x="60" y="120" font-size="38" font-weight="700" letter-spacing="1" fill="#FFFFFF">TECHNICAL SUPPORT SYSTEM</text>
+<rect x="62" y="136" width="150" height="5" rx="2.5" fill="url(#bar)"/>
+<text x="60" y="178" font-size="20" font-weight="600" fill="#34D399">Production field-support platform</text>
+<text x="60" y="204" font-size="14" fill="#9DB4E8">Opportunity Education Tanzania &#183; 36 partner schools &#183; in production</text>
+<g>
+<rect x="60" y="222" width="196" height="30" rx="8" fill="#04092A" stroke="#0E4DFF" stroke-opacity="0.5"/>
+<rect x="266" y="222" width="188" height="30" rx="8" fill="#04092A" stroke="#0E4DFF" stroke-opacity="0.5"/>
+<rect x="464" y="222" width="150" height="30" rx="8" fill="#04092A" stroke="#0E4DFF" stroke-opacity="0.5"/>
+<g font-size="12" font-weight="600" letter-spacing="1.4" fill="#17D9F9" text-anchor="middle">
+<text x="158" y="242">112 REST ENDPOINTS</text>
+<text x="360" y="242">23-TABLE SCHEMA</text>
+<text x="539" y="242">4-TIER SLA</text>
+</g>
+</g>
+
+<path fill="url(#wave1)" d="M0 236 Q 150 214 300 236 T 600 236 T 900 236 T 1200 236 T 1500 236 T 1800 236 V 280 H 0 Z"><animateTransform attributeName="transform" type="translate" from="0 0" to="-600 0" dur="11s" repeatCount="indefinite"/></path>
+<path fill="url(#wave2)" d="M0 252 Q 150 234 300 252 T 600 252 T 900 252 T 1200 252 T 1500 252 T 1800 252 V 280 H 0 Z"><animateTransform attributeName="transform" type="translate" from="-600 0" to="0 0" dur="15s" repeatCount="indefinite"/></path>
+</g>
+<metadata><rights>Copyright 2026 Claytone Curthberth Mhina. The artwork and text of this page are all rights reserved; no license granted for copying, modification or redistribution without written permission.</rights></metadata>
+</svg>

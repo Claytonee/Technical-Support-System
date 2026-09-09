@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 350" width="1200" height="350" role="img" aria-label="Automated SLA engine: four priority tiers with hard deadlines, showing a critical fault breaching its two-hour deadline and escalating"><!--(c) 2026 Claytone Curthberth Mhina. Artwork and text all rights reserved.-->
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00072D"/><stop offset="1" stop-color="#00085B"/></linearGradient>
+<radialGradient id="burn" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#F20002" stop-opacity="0.40"/><stop offset="1" stop-color="#F20002" stop-opacity="0"/></radialGradient>
+<clipPath id="card"><rect x="0" y="0" width="1200" height="350" rx="18"/></clipPath>
+</defs>
+<g clip-path="url(#card)" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+<rect width="1200" height="350" fill="url(#bg)"/>
+<g fill="#EAF7F3"><circle cx="140" cy="30" r="1.2" opacity="0.28"/><circle cx="520" cy="58" r="1" opacity="0.22"/><circle cx="880" cy="26" r="1.2" opacity="0.30"/><circle cx="1140" cy="66" r="1.1" opacity="0.26"/><circle cx="90" cy="316" r="1.1" opacity="0.22"/></g>
+
+<text x="48" y="48" font-size="16" font-weight="600" letter-spacing="2.4" fill="#5F79C0">AUTOMATED SLA ENGINE</text>
+<text x="48" y="74" font-size="14" fill="#9DB4E8">Every reported fault is triaged into one of four tiers, each with a hard deadline and automatic breach detection</text>
+<g font-size="13" fill="#9DB4E8"><circle cx="960" cy="43" r="5" fill="#34D399"/><text x="974" y="48">within SLA</text><circle cx="1064" cy="43" r="5" fill="#F20002"/><text x="1078" y="48">breached</text></g>
+
+<g font-size="13.5" font-weight="700" fill="#EAF7F3">
+<circle cx="52" cy="122" r="5" fill="#F20002"/><text x="66" y="127">CRITICAL</text>
+<circle cx="52" cy="170" r="5" fill="#17D9F9"/><text x="66" y="175">HIGH</text>
+<circle cx="52" cy="218" r="5" fill="#0E4DFF"/><text x="66" y="223">MEDIUM</text>
+<circle cx="52" cy="266" r="5" fill="#5F79C0"/><text x="66" y="271">LOW</text>
+</g>
+<g font-size="13" fill="#9DB4E8" text-anchor="end">
+<text x="232" y="127">&#8804; 2 h</text><text x="232" y="175">&#8804; 8 h</text><text x="232" y="223">&#8804; 24 h</text><text x="232" y="271">&#8804; 72 h</text>
+</g>
+
+<g fill="#04092A" stroke="#0E4DFF" stroke-opacity="0.35">
+<rect x="256" y="114" width="716" height="16" rx="8"/>
+<rect x="256" y="162" width="716" height="16" rx="8"/>
+<rect x="256" y="210" width="716" height="16" rx="8"/>
+<rect x="256" y="258" width="716" height="16" rx="8"/>
+</g>
+
+<ellipse cx="972" cy="122" rx="60" ry="42" fill="url(#burn)" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.40;0.44;0.90;0.97;1" dur="8s" repeatCount="indefinite"/></ellipse>
+
+<rect x="256" y="114" width="0" height="16" rx="8" fill="#34D399">
+  <animate attributeName="width" values="0;0;716;716;0" keyTimes="0;0.05;0.40;0.97;1" dur="8s" repeatCount="indefinite"/>
+  <animate attributeName="fill" values="#34D399;#34D399;#F20002;#F20002;#34D399" keyTimes="0;0.34;0.42;0.97;1" dur="8s" repeatCount="indefinite"/>
+</rect>
+<rect x="256" y="162" width="0" height="16" rx="8" fill="#34D399"><animate attributeName="width" values="0;0;430;430;0" keyTimes="0;0.05;0.92;0.97;1" dur="8s" repeatCount="indefinite"/></rect>
+<rect x="256" y="210" width="0" height="16" rx="8" fill="#34D399"><animate attributeName="width" values="0;0;251;251;0" keyTimes="0;0.05;0.92;0.97;1" dur="8s" repeatCount="indefinite"/></rect>
+<rect x="256" y="258" width="0" height="16" rx="8" fill="#34D399"><animate attributeName="width" values="0;0;129;129;0" keyTimes="0;0.05;0.92;0.97;1" dur="8s" repeatCount="indefinite"/></rect>
+
+<g fill="#04092A">
+<rect x="1000" y="110" width="152" height="24" rx="12" stroke="#34D399" stroke-opacity="0.8"><animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.40;0.42;0.97;1" dur="8s" repeatCount="indefinite"/></rect>
+<rect x="1000" y="110" width="152" height="24" rx="12" stroke="#F20002" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.40;0.42;0.90;0.97;1" dur="8s" repeatCount="indefinite"/></rect>
+<rect x="1000" y="158" width="152" height="24" rx="12" stroke="#34D399" stroke-opacity="0.8"/>
+<rect x="1000" y="206" width="152" height="24" rx="12" stroke="#34D399" stroke-opacity="0.8"/>
+<rect x="1000" y="254" width="152" height="24" rx="12" stroke="#34D399" stroke-opacity="0.8"/>
+</g>
+<g font-size="12" font-weight="600" letter-spacing="1.2" text-anchor="middle">
+<text x="1076" y="127" fill="#34D399">WITHIN SLA<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.40;0.42;0.97;1" dur="8s" repeatCount="indefinite"/></text>
+<text x="1076" y="127" fill="#F20002" opacity="0">BREACHED<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.40;0.42;0.90;0.97;1" dur="8s" repeatCount="indefinite"/></text>
+<text x="1076" y="175" fill="#34D399">WITHIN SLA</text>
+<text x="1076" y="223" fill="#34D399">WITHIN SLA</text>
+<text x="1076" y="271" fill="#34D399">WITHIN SLA</text>
+</g>
+
+<line x1="48" y1="296" x2="1152" y2="296" stroke="#0E4DFF" stroke-width="1" opacity="0.28"/>
+<text x="48" y="324" font-size="13" fill="#EAF7F3">A breached deadline escalates on its own <tspan fill="#5F79C0">&#183; to the field team, then to leadership &#183; no reported fault sits unowned</tspan></text>
+<text x="1152" y="324" text-anchor="end" font-size="12" letter-spacing="1.2" fill="#5F79C0" opacity="0">ESCALATING<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.44;0.48;0.90;0.97;1" dur="8s" repeatCount="indefinite"/></text>
+</g>
+<metadata><rights>Copyright 2026 Claytone Curthberth Mhina. The artwork and text of this page are all rights reserved; no license granted for copying, modification or redistribution without written permission.</rights></metadata>
+</svg>
