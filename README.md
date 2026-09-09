@@ -1,4 +1,4 @@
-<img src="https://cdn.jsdelivr.net/gh/Claytonee/Technical-Support-System@main/assets/tss-hero.svg" alt="Technical Support System — production field-support platform for Opportunity Education Tanzania" width="100%"/>
+<img src="https://cdn.jsdelivr.net/gh/Claytonee/Technical-Support-System@main/assets/hero-heartbeat.svg" alt="Technical Support System — a school stops checking in and the monitor opens a critical ticket by itself" width="100%"/>
 
 ![Node.js](https://img.shields.io/badge/Node.js-Express-0f1117?style=flat-square&logo=nodedotjs&logoColor=2dd98a)
 ![MySQL](https://img.shields.io/badge/MySQL-26_tables-0f1117?style=flat-square&logo=mysql&logoColor=4f7cff)

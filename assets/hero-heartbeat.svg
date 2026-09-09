@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="1200" height="360" role="img" aria-label="Technical Support System — a school's learning server stops checking in and the monitor opens a critical ticket by itself"><!--(c) 2026 Claytone Curthberth Mhina. Artwork and text all rights reserved.-->
+<defs>
+<clipPath id="card"><rect x="0" y="0" width="1200" height="360" rx="14"/></clipPath>
+<clipPath id="sweep"><rect x="56" y="150" width="0" height="170"><animate attributeName="width" values="0;1088;1088;0" keyTimes="0;0.86;0.97;1" dur="8s" repeatCount="indefinite"/></rect></clipPath>
+<linearGradient id="topline" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFAE00"/><stop offset="0.55" stop-color="#FFAE00" stop-opacity="0.35"/><stop offset="1" stop-color="#FFAE00" stop-opacity="0"/></linearGradient>
+<radialGradient id="alertglow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ff5263" stop-opacity="0.34"/><stop offset="1" stop-color="#ff5263" stop-opacity="0"/></radialGradient>
+</defs>
+<g clip-path="url(#card)" font-family="DM Sans, Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+<rect width="1200" height="360" fill="#0f1117"/>
+<rect x="0" y="0" width="1200" height="3" fill="url(#topline)"/>
+<line x1="56" y1="176" x2="56" y2="300" stroke="#ffffff" stroke-opacity="0.028"/><line x1="116" y1="176" x2="116" y2="300" stroke="#ffffff" stroke-opacity="0.028"/><line x1="176" y1="176" x2="176" y2="300" stroke="#ffffff" stroke-opacity="0.028"/><line x1="236" y1="176" x2="236" y2="300" stroke="#ffffff" stroke-opacity="0.028"/><line x1="296" y1="176" x2="296" y2="300" stroke="#ffffff" stroke-opacity="0.028"/><line x1="356" y1="176" x2="356" y2="300" stroke="#ffffff" stroke-opacity="0.028"/><line x1="416" y1="176" x2="416" y2="300" stroke="#ffffff" stroke-opacity="0.028"/><line x1="476" y1="176" x2="476" y2="300" stroke="#ffffff" stroke-opacity="0.028"/><line x1="536" y1="176" x2="536" y2="300" stroke="#ffffff" stroke-opacity="0.028"/><line x1="596" y1="176" x2="596" y2="300" stroke="#ffffff" stroke-opacity="0.028"/><line x1="656" y1="176" x2="656" y2="300" stroke="#ffffff" stroke-opacity="0.028"/><line x1="716" y1="176" x2="716" y2="300" stroke="#ffffff" stroke-opacity="0.028"/><line x1="776" y1="176" x2="776" y2="300" stroke="#ffffff" stroke-opacity="0.028"/><line x1="836" y1="176" x2="836" y2="300" stroke="#ffffff" stroke-opacity="0.028"/><line x1="896" y1="176" x2="896" y2="300" stroke="#ffffff" stroke-opacity="0.028"/><line x1="956" y1="176" x2="956" y2="300" stroke="#ffffff" stroke-opacity="0.028"/><line x1="1016" y1="176" x2="1016" y2="300" stroke="#ffffff" stroke-opacity="0.028"/><line x1="1076" y1="176" x2="1076" y2="300" stroke="#ffffff" stroke-opacity="0.028"/><line x1="1136" y1="176" x2="1136" y2="300" stroke="#ffffff" stroke-opacity="0.028"/>
+<line x1="56" y1="240" x2="1144" y2="240" stroke="#ffffff" stroke-opacity="0.05"/>
+
+<g transform="translate(56,42) scale(1.25)"><path d="M24.33,10c-.54-1.27.49-3,1.84-4.71A14.81,14.81,0,0,1,29.76,12C27.32,11.83,24.94,11.43,24.33,10ZM13.21,5.57c1.47-.63,1.93-2.75,2.1-5h-.68A14.79,14.79,0,0,0,7.28,2.91C9.27,4.65,11.5,6.3,13.21,5.57ZM24.59,3.84A14.81,14.81,0,0,0,17.27.7c.23,2.15.8,4.14,2.42,4.79S23,5.16,24.59,3.84ZM24.41,16.5c-.78,2,1.69,4.33,3.74,6.39a14.79,14.79,0,0,0,2-8.12c0-.2,0-.39,0-.58C27.59,14.4,25.07,14.86,24.41,16.5Zm-15.65.19c-.55-2-8-1.77-8.32-1.68,0,.36,0,.72,0,1.08A14.79,14.79,0,0,0,3.59,24.6C5.35,22.59,9.31,18.7,8.76,16.69Zm-.08-6.48c.71-1.76-1.16-4.08-3-6.1a14.87,14.87,0,0,0-4.91,8.2C3.8,12.17,7.83,12.34,8.68,10.21Zm11.2,10.94c-2.19.94-1.68,7.26-1.59,8.85a14.83,14.83,0,0,0,8.32-4.93C24.4,23,21.78,20.33,19.88,21.14Zm-6.48.08c-2.8-1-7.6,4.91-7.94,5.36a14.81,14.81,0,0,0,9.76,3.72C15.25,29.12,16.2,22.21,13.4,21.22Z" fill="#FFAE00"/></g>
+<text x="104" y="65" font-size="12" font-weight="600" letter-spacing="2.6" fill="#FFAE00">OPPORTUNITY EDUCATION TANZANIA</text>
+<text x="56" y="118" font-size="42" font-weight="600" letter-spacing="-0.6" fill="#e8eaf2">Technical Support System</text>
+<text x="56" y="150" font-size="15" fill="#9ba1b5">Every school checks in. When one stops, nobody has to notice.</text>
+
+<g text-anchor="end" font-family="DM Mono, SFMono-Regular, Consolas, monospace" font-size="12">
+<text x="1144" y="62" fill="#636a82">in production</text>
+<circle cx="1132" cy="86" r="4.5" fill="#2dd98a"><animate attributeName="opacity" values="1;0.2;1" dur="2.2s" repeatCount="indefinite"/></circle>
+<text x="1120" y="90" fill="#2dd98a">36 schools reporting</text>
+</g>
+
+<circle cx="900" cy="240" r="70" fill="url(#alertglow)" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.667;0.697;0.94;0.97;1" dur="8s" repeatCount="indefinite"/></circle>
+
+<g clip-path="url(#sweep)" fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M56 240 H102 L110 248 L119 180 L128 266 L136 240 H230 L238 248 L247 180 L256 266 L264 240 H358 L366 248 L375 180 L384 266 L392 240 H486 L494 248 L503 180 L512 266 L520 240 H614 L622 248 L631 180 L640 266 L648 240 H700" stroke="#2dd98a"/>
+<path d="M700 240 H900" stroke="#f5a623" stroke-dasharray="1 9" stroke-opacity="0.85"/>
+<path d="M900 240 H1144" stroke="#ff5263"/>
+</g>
+
+<circle cy="240" r="5.5" fill="#2dd98a">
+<animate attributeName="cx" values="56;1144;1144;56" keyTimes="0;0.86;0.97;1" dur="8s" repeatCount="indefinite"/>
+<animate attributeName="fill" values="#2dd98a;#2dd98a;#f5a623;#ff5263;#ff5263;#2dd98a" keyTimes="0;0.509;0.519;0.677;0.97;1" dur="8s" repeatCount="indefinite"/>
+</circle>
+
+<text x="712" y="224" font-size="11.5" font-family="DM Mono, SFMono-Regular, Consolas, monospace" fill="#f5a623" opacity="0">no heartbeat<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.509;0.529;0.94;0.97;1" dur="8s" repeatCount="indefinite"/></text>
+
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.667;0.697;0.94;0.97;1" dur="8s" repeatCount="indefinite"/>
+<line x1="900" y1="196" x2="900" y2="232" stroke="#ff5263" stroke-width="1.2" stroke-dasharray="3 4"/>
+<rect x="768" y="146" width="264" height="50" rx="10" fill="#161921" stroke="#ff5263" stroke-opacity="0.55"/>
+<circle cx="788" cy="171" r="4.5" fill="#ff5263"/>
+<text x="802" y="167" font-size="12" font-weight="600" letter-spacing="1.1" fill="#ff5263">CRITICAL &#183; OPENED BY THE MONITOR</text>
+<text x="802" y="185" font-size="11" font-family="DM Mono, SFMono-Regular, Consolas, monospace" fill="#636a82">no ticket was filed by a person &#183; due in 4 h</text>
+</g>
+
+<text x="56" y="330" font-size="11.5" font-family="DM Mono, SFMono-Regular, Consolas, monospace" fill="#636a82">128 REST endpoints  ·  26 MySQL tables  ·  16 role-gated pages  ·  4 priority tiers  ·  3 intake channels  ·  124 role assertions</text>
+</g>
+<metadata><rights>Copyright 2026 Claytone Curthberth Mhina. The system is the property of Opportunity Education Tanzania. The artwork and text of this page are all rights reserved; no license granted without written permission.</rights></metadata>
+</svg>
