@@ -71,6 +71,18 @@ The deadline is written onto the row when the fault is filed, not calculated whe
 
 <img src="https://cdn.jsdelivr.net/gh/Claytonee/Technical-Support-System@3923191a9726753dd404bfdceab077799abf75d2/assets/role-matrix.svg" alt="The role matrix: what each of the four roles can reach, asserted by an executable suite" width="100%"/>
 
+| | admin | subadmin | school | teacher |
+|---|:---:|:---:|:---:|:---:|
+| Dashboard, Errors, Guides, Resources, Inventory, Search, Settings | ✔ | ✔ | ✔ | ✔ |
+| AI Assistant | — | ✔ | ✔ | ✔ |
+| Error Tracker | ✔ | ✔ | ✔ | own reports |
+| Analytics, School Profiles, Check-Ins, Communications | ✔ | ✔ | ✔ | — |
+| Visit Planner | ✔ | ✔ | — | — |
+| Sub-Admins, School Admins, Audit, LRS, Approvals, Branding | ✔ | — | — | — |
+| Teachers, registration links | — | — | ✔ | — |
+
+The assistant is the row worth pausing on. It is **not** head office's: it helps whoever is standing in front of the equipment, so a platform administrator — who runs the system rather than uses it — does not get it.
+
 **A permission has two halves, and both have to be set.** One marker hides the navigation link; a separate guard refuses the route. Setting only the first gives you a page that is invisible and still reachable by typing its address — which is how a page once rendered for every role and merely failed to load its data. A suite of **124 assertions** now fails the build if the two halves disagree.
 
 **A delegate never outranks the delegator.** A school admin can hand tablet-inventory write access to a teacher; the grant is re-read on every request, so revoking it bites immediately rather than at the delegate's next login. But a school admin cannot delete a device, so neither can a teacher they granted.
