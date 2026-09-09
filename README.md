@@ -1,4 +1,4 @@
-<img src="https://cdn.jsdelivr.net/gh/Claytonee/Technical-Support-System@main/assets/hero-heartbeat.svg" alt="Technical Support System — a school stops checking in and the monitor opens a critical ticket by itself" width="100%"/>
+<img src="https://cdn.jsdelivr.net/gh/Claytonee/Technical-Support-System@main/assets/hero-heartbeat.svg?v=2" alt="Technical Support System — a school stops checking in and the monitor opens a critical ticket by itself" width="100%"/>
 
 ![Node.js](https://img.shields.io/badge/Node.js-Express-0f1117?style=flat-square&logo=nodedotjs&logoColor=2dd98a)
 ![MySQL](https://img.shields.io/badge/MySQL-26_tables-0f1117?style=flat-square&logo=mysql&logoColor=4f7cff)
@@ -24,7 +24,7 @@ The harder half of the problem is that the people closest to a fault are the lea
 
 ## Three ways a fault gets in
 
-<img src="https://cdn.jsdelivr.net/gh/Claytonee/Technical-Support-System@main/assets/intake.svg" alt="Three intake channels — web form, WhatsApp and LRS heartbeat — converging on one triage, SLA clock and escalation chain" width="100%"/>
+<img src="https://cdn.jsdelivr.net/gh/Claytonee/Technical-Support-System@main/assets/intake.svg?v=2" alt="Three intake channels — web form, WhatsApp and LRS heartbeat — converging on one triage, SLA clock and escalation chain" width="100%"/>
 
 | Channel | How it starts | What the system does |
 |---|---|---|

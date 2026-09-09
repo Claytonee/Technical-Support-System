@@ -39,10 +39,10 @@
 
 <g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.667;0.697;0.94;0.97;1" dur="8s" repeatCount="indefinite"/>
 <line x1="900" y1="196" x2="900" y2="232" stroke="#ff5263" stroke-width="1.2" stroke-dasharray="3 4"/>
-<rect x="768" y="146" width="264" height="50" rx="10" fill="#161921" stroke="#ff5263" stroke-opacity="0.55"/>
-<circle cx="788" cy="171" r="4.5" fill="#ff5263"/>
-<text x="802" y="167" font-size="12" font-weight="600" letter-spacing="1.1" fill="#ff5263">CRITICAL &#183; OPENED BY THE MONITOR</text>
-<text x="802" y="185" font-size="11" font-family="DM Mono, SFMono-Regular, Consolas, monospace" fill="#636a82">no ticket was filed by a person &#183; due in 4 h</text>
+<rect x="747" y="146" width="306" height="50" rx="10" fill="#161921" stroke="#ff5263" stroke-opacity="0.55"/>
+<circle cx="767" cy="171" r="4.5" fill="#ff5263"/>
+<text x="785" y="167" font-size="12" font-weight="600" letter-spacing="1.1" fill="#ff5263">CRITICAL &#183; OPENED BY THE MONITOR</text>
+<text x="785" y="185" font-size="11" font-family="DM Mono, SFMono-Regular, Consolas, monospace" fill="#636a82">no person filed this &#183; due in 4 h</text>
 </g>
 
 <text x="56" y="330" font-size="11.5" font-family="DM Mono, SFMono-Regular, Consolas, monospace" fill="#636a82">128 REST endpoints  ·  26 MySQL tables  ·  16 role-gated pages  ·  4 priority tiers  ·  3 intake channels  ·  124 role assertions</text>
