@@ -1,4 +1,4 @@
-<img src="https://cdn.jsdelivr.net/gh/Claytonee/Technical-Support-System@ee7ac419c3279f69722c28b117a2c150284e29f8/assets/hero-heartbeat.svg" alt="Technical Support System — a school stops checking in and the monitor opens a critical ticket by itself" width="100%"/>
+<img src="https://cdn.jsdelivr.net/gh/Claytonee/Technical-Support-System@3923191a9726753dd404bfdceab077799abf75d2/assets/hero-heartbeat.svg" alt="Technical Support System — a school stops checking in and the monitor opens a critical ticket by itself" width="100%"/>
 
 ![Node.js](https://img.shields.io/badge/Node.js-Express-0f1117?style=flat-square&logo=nodedotjs&logoColor=2dd98a)
 ![MySQL](https://img.shields.io/badge/MySQL-26_tables-0f1117?style=flat-square&logo=mysql&logoColor=4f7cff)
@@ -24,7 +24,7 @@ The harder half of the problem is that the people closest to a fault are the lea
 
 ## Three ways a fault gets in
 
-<img src="https://cdn.jsdelivr.net/gh/Claytonee/Technical-Support-System@ee7ac419c3279f69722c28b117a2c150284e29f8/assets/intake.svg" alt="Three intake channels — web form, WhatsApp and LRS heartbeat — converging on one triage, SLA clock and escalation chain" width="100%"/>
+<img src="https://cdn.jsdelivr.net/gh/Claytonee/Technical-Support-System@3923191a9726753dd404bfdceab077799abf75d2/assets/intake.svg" alt="Three intake channels — web form, WhatsApp and LRS heartbeat — converging on one triage, SLA clock and escalation chain" width="100%"/>
 
 | Channel | How it starts | What the system does |
 |---|---|---|
@@ -56,7 +56,7 @@ It originally assigned the field engineer for everybody. That skipped the one pe
 
 ## The clock
 
-<img src="https://cdn.jsdelivr.net/gh/Claytonee/Technical-Support-System@ee7ac419c3279f69722c28b117a2c150284e29f8/assets/sla-clock.svg" alt="The SLA engine: four priority tiers with hard targets, a critical fault breaching four hours and escalating" width="100%"/>
+<img src="https://cdn.jsdelivr.net/gh/Claytonee/Technical-Support-System@3923191a9726753dd404bfdceab077799abf75d2/assets/sla-clock.svg" alt="The SLA engine: four priority tiers with hard targets, a critical fault breaching four hours and escalating" width="100%"/>
 
 | Priority | Target |
 |---|---|
@@ -69,7 +69,7 @@ The deadline is written onto the row when the fault is filed, not calculated whe
 
 ## Who sees what
 
-<img src="https://cdn.jsdelivr.net/gh/Claytonee/Technical-Support-System@ee7ac419c3279f69722c28b117a2c150284e29f8/assets/role-matrix.svg" alt="The role matrix: what each of the four roles can reach, asserted by an executable suite" width="100%"/>
+<img src="https://cdn.jsdelivr.net/gh/Claytonee/Technical-Support-System@3923191a9726753dd404bfdceab077799abf75d2/assets/role-matrix.svg" alt="The role matrix: what each of the four roles can reach, asserted by an executable suite" width="100%"/>
 
 **A permission has two halves, and both have to be set.** One marker hides the navigation link; a separate guard refuses the route. Setting only the first gives you a page that is invisible and still reachable by typing its address — which is how a page once rendered for every role and merely failed to load its data. A suite of **124 assertions** now fails the build if the two halves disagree.
 
@@ -93,7 +93,7 @@ Nine verification suites run the behaviour that matters: the role matrix, the sc
 
 ## Architecture
 
-<img src="https://cdn.jsdelivr.net/gh/Claytonee/Technical-Support-System@main/assets/architecture.svg" alt="Architecture: a web form, a WhatsApp webhook and an LRS heartbeat all enter one Express API, which reaches MySQL, the SLA clock and Cloudinary" width="100%"/>
+<img src="https://cdn.jsdelivr.net/gh/Claytonee/Technical-Support-System@3923191a9726753dd404bfdceab077799abf75d2/assets/architecture.svg" alt="Architecture: a web form, a WhatsApp webhook and an LRS heartbeat all enter one Express API, which reaches MySQL, the SLA clock and Cloudinary" width="100%"/>
 
 Schema changes are **additive only**. New columns are nullable or defaulted, migrations run on boot, and dropping or renaming anything is a separate, later, explicitly confirmed change — the expand-and-contract discipline, so a deploy can never take data with it.
 
