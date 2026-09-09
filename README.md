@@ -93,23 +93,7 @@ Nine verification suites run the behaviour that matters: the role matrix, the sc
 
 ## Architecture
 
-```mermaid
-%%{init: { "theme": "base", "themeVariables": { "primaryColor": "#161921", "primaryTextColor": "#e8eaf2", "primaryBorderColor": "#4f7cff", "lineColor": "#636a82", "secondaryColor": "#1d2130", "tertiaryColor": "#0f1117", "clusterBkg": "#0f1117", "edgeLabelBackground": "#0f1117", "fontSize": "13px" } }}%%
-flowchart LR
-    W["Web form"] --> API["Express API<br/>128 endpoints · JWT · RBAC"]
-    WA["WhatsApp webhook"] --> API
-    HB["LRS heartbeat"] --> API
-    API --> DB[("MySQL<br/>26 tables · audit log")]
-    API --> SLA["SLA clock<br/>+ escalation"]
-    API --> CDN["Cloudinary"]
-    SLA --> DB
-    classDef in fill:#1d2130,stroke:#36d9cc,color:#e8eaf2,stroke-width:1.5px;
-    classDef core fill:#161921,stroke:#4f7cff,color:#e8eaf2,stroke-width:1.5px;
-    classDef data fill:#0f1117,stroke:#9b7dff,color:#e8eaf2,stroke-width:1.5px;
-    class W,WA,HB in;
-    class API,SLA core;
-    class DB,CDN data;
-```
+<img src="https://cdn.jsdelivr.net/gh/Claytonee/Technical-Support-System@main/assets/architecture.svg" alt="Architecture: a web form, a WhatsApp webhook and an LRS heartbeat all enter one Express API, which reaches MySQL, the SLA clock and Cloudinary" width="100%"/>
 
 Schema changes are **additive only**. New columns are nullable or defaulted, migrations run on boot, and dropping or renaming anything is a separate, later, explicitly confirmed change — the expand-and-contract discipline, so a deploy can never take data with it.
 
