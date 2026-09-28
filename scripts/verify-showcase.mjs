@@ -7,27 +7,25 @@ const readme = await readFile(path.join(root, 'README.md'), 'utf8');
 const failures = [];
 
 const required = [
-  '# Technical Support System',
-  'Software Engineer case study',
-  '## The challenge',
-  '### Error Form',
-  '### Escalation',
-  '### AI Assistant',
-  '### Resource Library',
-  '### Offline reporting',
-  '## Verification'
+  '# Technical Support System — Engineering Case Study', '**Software Engineer:**',
+  '## The challenge it solves', '## Anatomy of a fault', '**Error Form**',
+  '**Escalation**', '**AI Assistant**', '**Resource Library**',
+  '## Diagnosis backed by knowledge', '## Engineering underneath', '## Verification'
 ];
+
 for (const phrase of required) {
   if (!readme.includes(phrase)) failures.push(`missing required section/copy: ${phrase}`);
 }
 
-for (const stale of ['Partnership Network & Development Team', 'The product is not a WhatsApp bot']) {
+for (const stale of ['Partnership Network & Development Team', 'The product is not a WhatsApp bot',
+  'LRS heartbeat', '## Showcase visuals']) {
   if (readme.includes(stale)) failures.push(`stale positioning returned: ${stale}`);
 }
 
 const visualPaths = [...readme.matchAll(/<img\s+src="([^"]+)"/g)]
-  .map(match => match[1])
-  .filter(src => !/^https?:/i.test(src));
+  .map(match => match[1]).filter(src => !/^https?:/i.test(src));
+
+if (visualPaths.length !== 4) failures.push(`expected 4 local visual plates, found ${visualPaths.length}`);
 
 for (const relative of visualPaths) {
   const fullPath = path.resolve(root, relative);
@@ -46,6 +44,9 @@ for (const relative of visualPaths) {
   }
 }
 
+const wordCount = readme.trim().split(/\s+/).length;
+if (wordCount > 1100) failures.push(`README is too long (${wordCount} words; limit 1100)`);
+
 if (failures.length) {
   console.error(failures.map(failure => `FAIL ${failure}`).join('\n'));
   process.exit(1);
@@ -53,3 +54,4 @@ if (failures.length) {
 
 console.log(`PASS showcase structure (${required.length} required concepts)`);
 console.log(`PASS local visuals (${visualPaths.length} accessible assets)`);
+console.log(`PASS compact README (${wordCount} words)`);

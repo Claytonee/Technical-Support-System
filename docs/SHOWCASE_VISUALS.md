@@ -1,41 +1,30 @@
 # Showcase visual system
 
-The README uses diagrams as engineering evidence, not decoration.
+The README uses compact technical plates to explain the product rather than repeating long feature prose.
 
-## Generate
-
-From the repository root:
+## Generate and verify
 
 ```bash
 node scripts/generate-showcase-visuals.mjs
+node scripts/verify-showcase.mjs
 ```
 
-The script writes:
+The dependency-free generator writes:
 
-- `assets/support-journey.svg` — the end-to-end support sequence;
-- `assets/capability-map.svg` — user action and system outcome for four core capabilities;
-- `assets/system-architecture-v2.svg` — runtime boundaries and optional adapters.
+- `assets/support-system-banner.svg` — the product promise and three core guarantees;
+- `assets/fault-anatomy.svg` — intake, offline safety, routing, escalation and resolution;
+- `assets/support-intelligence.svg` — the relationship between symptoms, approved knowledge, AI and the Resource Library;
+- `assets/system-architecture.svg` — the runtime path and security boundary.
 
-The generator has no package dependencies. Text, dimensions, colors and content remain reviewable in Git and can be regenerated consistently.
+## Design language
 
-## Visual rules
+- A deep-navy technical canvas keeps the set coherent.
+- Cyan carries system flow, amber marks operational decisions and green marks resolved or approved outcomes.
+- Geometry communicates function: rectangles are bounded system stages, a diamond is a delivery gate and a hexagon is shared knowledge.
+- Small labels provide orientation; one large statement per node carries the meaning.
+- Decorative stars and dot grids add depth without competing with the flow.
+- Native SVG motion is limited to signal travel, gentle rotation and state pulses. The static frame still explains the complete concept.
 
-- Every diagram must answer a concrete engineering question.
-- The diagram and surrounding prose must agree.
-- Text remains readable when the README is shown at laptop width.
-- Alternative text states the relationship shown, not “image” or “diagram”.
-- Color reinforces grouping but is never the only carrier of meaning.
-- Decorative animation is excluded.
+## README rule
 
-## Motion rule
-
-GitHub does not execute inline script in README SVGs and does not reliably play SVG animation. If a future concept genuinely needs time—for example, offline queue → reconnect → replay—export it to a short GIF and keep the static SVG as the editable, accessible fallback.
-
-Recommended production pattern:
-
-1. keep the source as deterministic SVG or HTML;
-2. capture only the state-changing layers;
-3. use 6–8 fps for a calm technical sequence;
-4. loop after a readable pause;
-5. link the GIF to the static high-resolution source;
-6. keep the README understandable when motion is disabled.
+Each plate gets one short interpretation paragraph. Details belong in a table or the implementation repository, not in a second explanation of the same picture.
