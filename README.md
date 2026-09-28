@@ -1,139 +1,139 @@
-<img src="https://cdn.jsdelivr.net/gh/Claytonee/Technical-Support-System@3923191a9726753dd404bfdceab077799abf75d2/assets/hero-heartbeat.svg" alt="Technical Support System — a school stops checking in and the monitor opens a critical ticket by itself" width="100%"/>
-
 ![Node.js](https://img.shields.io/badge/Node.js-Express-0f1117?style=flat-square&logo=nodedotjs&logoColor=2dd98a)
-![MySQL](https://img.shields.io/badge/MySQL-26_tables-0f1117?style=flat-square&logo=mysql&logoColor=4f7cff)
-![JWT](https://img.shields.io/badge/Auth-JWT_%C2%B7_4_roles-0f1117?style=flat-square&logo=jsonwebtokens&logoColor=9b7dff)
-![SPA](https://img.shields.io/badge/Frontend-vanilla_JS_SPA-0f1117?style=flat-square&logo=javascript&logoColor=f5a623)
-![PWA](https://img.shields.io/badge/PWA-offline_queue-0f1117?style=flat-square&logo=pwa&logoColor=36d9cc)
-![Cloudinary](https://img.shields.io/badge/Media-Cloudinary-0f1117?style=flat-square&logo=cloudinary&logoColor=4f7cff)
-![Deploy](https://img.shields.io/badge/Deploy-cPanel_%C2%B7_Passenger-0f1117?style=flat-square)
-![SLA](https://img.shields.io/badge/SLA-4h_%C2%B7_24h_%C2%B7_72h_%C2%B7_168h-FFAE00?style=flat-square)
+![MySQL](https://img.shields.io/badge/Database-MySQL%20%2F%20MariaDB-0f1117?style=flat-square&logo=mysql&logoColor=4f7cff)
+![PWA](https://img.shields.io/badge/PWA-offline--first-0f1117?style=flat-square&logo=pwa&logoColor=36d9cc)
+![RBAC](https://img.shields.io/badge/Security-4--role%20RBAC%20%2B%20MFA-0f1117?style=flat-square&logo=jsonwebtokens&logoColor=9b7dff)
+![Deploy](https://img.shields.io/badge/Production-cPanel%20%C2%B7%20Passenger-0f1117?style=flat-square)
 
-# Technical Support System
+# Offline-First School Technical Support & Knowledge System
 
-> The single channel through which Opportunity Education Tanzania's **36 partner schools** and its ICT field team report, triage and resolve technical faults.
-> **Status:** in production · **Role:** Software Developer, Partnership Network & Development Team · **2026**
+> A support operating system for Opportunity Education Tanzania's partner schools: help the school solve common faults, capture the ones it cannot solve, and keep one accountable owner from classroom to resolution.
 
-Technical overview. The production codebase is proprietary and is not published here; this page describes the system, the decisions inside it, and why each one is the way it is.
+**Status:** in production · **Role:** Software Developer, Partnership Network & Development Team · **2026**
 
-## The problem
+The product is not a WhatsApp bot, SMS gateway, or LRS-monitoring demo. Those are optional adapters. Its core value is a reliable support workflow designed for schools with intermittent connectivity and a small field team covering many sites.
 
-Before this system, a broken tablet or a school with no connectivity was fixed through phone calls and memory. Faults sat unowned: no record of who reported what, no deadline, no escalation when a technician was overloaded, and leadership had no way to see which schools were quietly failing. Three teams tracked the same reality in separate spreadsheets.
+## The problem it solves
 
-The harder half of the problem is that the people closest to a fault are the least likely to file one. A teacher with a dead tablet has a class in front of them. So the system does not depend on anybody opening the app.
+A technical fault can interrupt a lesson long before head office learns about it. Phone calls and spreadsheets lose context: who reported it, what was already tried, who owns it, when it became urgent, what equipment is affected, and whether the fix actually worked.
 
-## Three ways a fault gets in
+This system turns that fragmented process into one operational record and one clear chain of responsibility.
 
-<img src="https://cdn.jsdelivr.net/gh/Claytonee/Technical-Support-System@3923191a9726753dd404bfdceab077799abf75d2/assets/intake.svg" alt="Three intake channels — web form, WhatsApp and LRS heartbeat — converging on one triage, SLA clock and escalation chain" width="100%"/>
+## The core workflow
 
-| Channel | How it starts | What the system does |
+1. **Try the right fix first.** Guided troubleshooting and approved resources help a teacher or school administrator resolve common problems without waiting for travel.
+2. **Report reliably.** If the fault remains, the web app captures symptoms, impact, location, equipment, evidence, and the guide already attempted.
+3. **Keep working offline.** Reports and photographs queue in IndexedDB, then replay as the original multipart request when connectivity returns. A client reference prevents duplicate tickets.
+4. **Route to the nearest capable owner.** A teacher's report starts with their school administrator. Critical faults and school-admin reports reach the assigned field engineer immediately.
+5. **Escalate with context.** The school administrator can escalate to head office with a reason. The system records the owner, timestamp, timeline entry, and in-app notifications.
+6. **Close the loop.** Resolution history, CSAT, recurrence trends, visits, guides, manuals, inventory, warranties, and spares turn completed work into reusable operational knowledge.
+
+## Ownership is a product feature
+
+| Reported by | Initial owner | Why |
 |---|---|---|
-| **Web form** | A teacher or school admin files a report | Auto-routes it, stamps a deadline |
-| **WhatsApp** | A teacher messages the support number | The assistant replies with first steps, then offers to log it |
-| **LRS heartbeat** | Nobody does anything | A school's learning server stops checking in; the monitor opens a **critical** ticket against that school by itself |
+| Teacher | School administrator | The closest person who can inspect the classroom and solve a local issue |
+| Teacher, critical impact | Field engineer, with school notified | Teaching cannot wait for the normal triage step |
+| School administrator | Field engineer | The report has already passed the school level |
 
-The third one is the point. A silent server is the failure a school is least likely to report, because from inside the classroom it just looks like a slow morning.
+A teacher can report, add evidence, follow their own fault, and rate the outcome. They cannot close or escalate it past their school administrator. Escalation is a dedicated action—not a status value—because it must carry a reason, ownership change, timestamp, audit entry, and notification.
 
-Both non-web channels stamp the ticket with the channel they arrived on, so the field team can see at a glance which schools only ever reach them by WhatsApp — usually the ones with the worst connectivity.
+## SLA execution, not an SLA label
 
-**A phone number is not authentication.** An unmatched WhatsApp number may file a fault against a school code it supplies, is recorded as unverified, and can never read anything back. Being able to report a problem and being able to read a school's records are different rights, and only one of them can be granted by knowing a phone number.
-
-## Who holds a fault
-
-A fault has to belong to somebody the moment it exists, and the right somebody is usually not the engineer.
-
-| Reported by | Assigned to | Level | Also |
-|---|---|---|---|
-| Teacher | *nobody yet* | school | Their school admin is notified — that is the person who can walk to the room |
-| Teacher, critical | Field engineer | platform | The school admin is still told, and told why it skipped them |
-| School admin | Field engineer | platform | They **are** the school level |
-
-It originally assigned the field engineer for everybody. That skipped the one person who could have solved most of them in five minutes by walking down a corridor.
-
-**A teacher cannot change a fault's status.** They own the row, so the access check passes — but closing your own ticket takes it out of the school admin's queue before anyone has looked at it. Teachers report, and teachers rate.
-
-**Who is allowed to say it was fixed** is a separate question again. The rating token goes only to the teacher who reported the fault, or a school admin of that school. It is never issued to a platform admin, and never appears in a list response — handing it to head office would be handing them the school's answer to "was this actually fixed?"
-
-## The clock
-
-<img src="https://cdn.jsdelivr.net/gh/Claytonee/Technical-Support-System@3923191a9726753dd404bfdceab077799abf75d2/assets/sla-clock.svg" alt="The SLA engine: four priority tiers with hard targets, a critical fault breaching four hours and escalating" width="100%"/>
+<img src="assets/sla-clock.svg" alt="Four support priorities with resolution targets" width="100%"/>
 
 | Priority | Target |
-|---|---|
-| Critical | ≤ 4 hours |
-| High | ≤ 24 hours |
-| Medium | ≤ 72 hours |
-| Low | ≤ 168 hours |
+|---|---:|
+| Critical | 4 hours |
+| High | 24 hours |
+| Medium | 72 hours |
+| Low | 168 hours |
 
-The deadline is written onto the row when the fault is filed, not calculated when somebody opens a report. A breach escalates on its own, up the owner's own chain — a teacher's escalation reaches their school administrator, not a shared support mailbox, and if that school has no active administrator it falls back to email and the reply says so rather than failing silently.
+The due time is stored when the fault is created. An authenticated scheduled sweep locks each overdue row, processes it once, escalates school-level work to head office, assigns the school's field engineer where available, and creates in-app notifications plus a timeline/audit record. Repeated or overlapping sweeps do not duplicate the escalation.
 
-## Who sees what
+## Built for unreliable connectivity
 
-<img src="https://cdn.jsdelivr.net/gh/Claytonee/Technical-Support-System@3923191a9726753dd404bfdceab077799abf75d2/assets/role-matrix.svg" alt="The role matrix: what each of the four roles can reach, asserted by an executable suite" width="100%"/>
+Offline behavior is part of the domain, not a cosmetic PWA badge:
 
-| | admin | subadmin | school | teacher |
-|---|:---:|:---:|:---:|:---:|
-| Dashboard, Errors, Guides, Resources, Inventory, Search, Settings | ✔ | ✔ | ✔ | ✔ |
-| AI Assistant | — | ✔ | ✔ | ✔ |
-| Error Tracker | ✔ | ✔ | ✔ | own reports |
-| Analytics, School Profiles, Check-Ins, Communications | ✔ | ✔ | ✔ | — |
-| Visit Planner | ✔ | ✔ | — | — |
-| Sub-Admins, School Admins, Audit, LRS, Approvals, Branding | ✔ | — | — | — |
-| Teachers, registration links | — | — | ✔ | — |
+- The application shell and support content remain available without a connection.
+- Pending reports are visible outside a single page.
+- Attachments stay with the queued request and images are compressed to a storage budget.
+- Replay preserves the online API contract.
+- A stable `client_ref` makes lost responses and retries idempotent.
 
-The assistant is the row worth pausing on. It is **not** head office's: it helps whoever is standing in front of the equipment, so a platform administrator — who runs the system rather than uses it — does not get it.
+## Four roles, scoped at both UI and API
 
-**A permission has two halves, and both have to be set.** One marker hides the navigation link; a separate guard refuses the route. Setting only the first gives you a page that is invisible and still reachable by typing its address — which is how a page once rendered for every role and merely failed to load its data. A suite of **124 assertions** now fails the build if the two halves disagree.
+<img src="assets/role-matrix.svg" alt="Platform admin, field engineer, school admin and teacher permission matrix" width="100%"/>
 
-**A delegate never outranks the delegator.** A school admin can hand tablet-inventory write access to a teacher; the grant is re-read on every request, so revoking it bites immediately rather than at the delegate's next login. But a school admin cannot delete a device, so neither can a teacher they granted.
+- **Platform admin:** governance, assignment, analytics, security, audit, and system configuration
+- **Field engineer:** assigned schools, remote diagnosis, visits, inventory context, and resolution
+- **School admin:** local triage, teacher management, escalation, and school-level visibility
+- **Teacher:** guided help, own reports, evidence, progress visibility, and feedback
 
-**The interface asks the server what it may do.** Write controls are gated on a capability the API returns, never on the role in local storage — a grant made after login would not appear, and a revoked one would leave buttons that 403.
+Navigation visibility and route authorization are separate controls. Tenant checks bind school users to their school, teachers to their own reports, and field engineers to assigned schools. MFA, recovery codes, security events, and audit trails protect the human workflow around those permissions.
 
-## When the network isn't there
+## Operational knowledge and field work
 
-Schools lose connectivity for hours. A report written during that window is queued in the browser, **with its photographs** — image blobs held in IndexedDB and replayed later as the identical multipart request the online form would have sent.
+The system connects support records that are usually separated:
 
-Images are downscaled before they are stored (measured: 371 KB → 81 KB) and a size budget decides what fits, naming anything it had to leave behind rather than dropping it quietly. The "reports waiting to sync" banner is mounted by the application shell rather than by one page, because the person most likely to be offline is a teacher who never opens the tracker.
+- Guided resolution and a searchable resource library
+- Recurring-fault, response-time, resolution-time, and SLA analytics
+- School health, weekly check-ins, and preventive maintenance
+- Visit planning based on unresolved work and school context
+- Tablet/LRS inventory, warranty dates, suppliers, batches, and spares
+- CSAT owned by the reporter or their school—not by head office
 
-## Knowing what is actually running
+The product goal is fewer disrupted lessons and better fixes. Channel volume is not a success metric.
 
-`/api/health` reports the commit the **process** is running, read once at boot — not the commit in the working tree, and not what the static files say. A deploy once left new assets on disk while the old process was still serving them; files on disk are never proof of a deploy.
+## Optional adapters
 
-The same endpoint publishes feature flags — AI, email, SMS, WhatsApp inbound and send, heartbeat, uploads — each asked of the service's own configuration check, so "the assistant says it is not configured" can be diagnosed without server access.
+| Adapter | Purpose | Product rule |
+|---|---|---|
+| LRS heartbeat | Detect an installed school server or uplink becoming unreachable | Expand only where an agent is installed and earlier detection improves response time |
+| WhatsApp | Alternate inbound reporting | Use only when schools prefer it and reports retain enough identity and diagnostic context |
+| SMS / USSD | Low-bandwidth intake and alerts | Use where it reaches otherwise excluded users; never make it the main workflow |
+| Email | Best-effort event notification | The in-app record remains authoritative |
+| AI assistant | Resource-grounded support answers | Optional enhancement; approved knowledge remains usable without it |
 
-Nine verification suites run the behaviour that matters: the role matrix, the school escalation chain, teacher scoping, offline de-duplication, the heartbeat monitor, WhatsApp intake, the visit planner, analytics trends and the fault lifecycle. They provision their own fixtures and remove them afterwards, because suites pinned to accounts that happened to exist locally all broke the day the database was reseeded.
+Missing credentials do not pretend to be working features. Integrations fail closed or degrade to the core in-app workflow, and `/api/health` reports what is actually configured in the running process.
 
 ## Architecture
 
-<img src="https://cdn.jsdelivr.net/gh/Claytonee/Technical-Support-System@3923191a9726753dd404bfdceab077799abf75d2/assets/architecture.svg" alt="Architecture: a web form, a WhatsApp webhook and an LRS heartbeat all enter one Express API, which reaches MySQL, the SLA clock and Cloudinary" width="100%"/>
-
-Schema changes are **additive only**. New columns are nullable or defaulted, migrations run on boot, and dropping or renaming anything is a separate, later, explicitly confirmed change — the expand-and-contract discipline, so a deploy can never take data with it.
-
-## Stack
+```text
+Vanilla JS SPA / PWA
+  ├─ Service Worker + IndexedDB offline queue
+  └─ Role-aware support interface
+             │ HTTPS / JWT
+             ▼
+Node.js + Express API
+  ├─ authentication, MFA, RBAC and tenant scope
+  ├─ fault lifecycle, SLA sweep and audit trail
+  ├─ guided resolution, analytics and field operations
+  └─ optional integration adapters
+             │
+             ├─ MySQL / MariaDB
+             └─ Cloudinary for uploaded evidence and resources
+```
 
 | Layer | Choice |
 |---|---|
-| Runtime | Node.js, Express |
-| Database | MySQL / MariaDB — 26 tables, audit log, additive migrations on boot |
-| API | 128 REST endpoints across 21 route modules, JWT, 4-role RBAC plus capability checks |
-| Frontend | Vanilla JavaScript SPA, hash routing, no framework — 16 role-gated pages, served by the same Express process |
-| Offline | Progressive web app, IndexedDB request queue with binary attachments |
-| Media | Cloudinary |
-| Messaging | WhatsApp inbound webhook and send, email, SMS |
-| Hosting | cPanel / DirectAdmin, Passenger |
+| Backend | Node.js 18+, Express |
+| Database | MySQL / MariaDB with additive, replay-safe schema extensions |
+| Frontend | Vanilla JavaScript SPA/PWA with hash routing |
+| Offline | Service worker, IndexedDB, multipart replay, duplicate protection |
+| Security | JWT, bcrypt, TOTP MFA, recovery codes, scoped RBAC, security events |
+| Hosting | cPanel/CloudLinux, LiteSpeed/Passenger, MySQL on the same host |
+| Deployment | Signed GitHub webhook, fast-forward-only update, Passenger restart, build-aware health check |
 
-## Impact
+## Engineering proof
 
-- One channel for 36 schools instead of phone calls and memory.
-- Faults that arrive without anybody filing them.
-- Deadlines and automatic escalation instead of unowned tickets.
-- A complete audit trail for every fault and every device.
-- Leadership sees network health without waiting for someone to compile it.
+Executable verification covers the role matrix, teacher → school → head-office chain, multi-status Follow-Up query, forward-only lifecycle, offline de-duplication, SLA idempotency, teacher scope, security boundaries, visits, analytics, and optional adapters. Suites create scoped fixtures and remove only the data they own.
+
+The maintained implementation and current product priorities are in [Claytonee/Troubleshooting-System](https://github.com/Claytonee/Troubleshooting-System).
 
 ## Reach me
 
 [![Email](https://img.shields.io/badge/Email-claytonecurth%40gmail.com-4f7cff?style=for-the-badge&labelColor=0f1117&logo=gmail&logoColor=FFAE00)](mailto:claytonecurth@gmail.com)
 
-Happy to walk through the intake routing, the escalation chain, the offline queue or the role matrix in detail.
+Happy to walk through the ownership model, offline queue, SLA processing, security boundaries, or field-support workflow.
 
-<sub>Built during my software developer placement at Opportunity Education Tanzania. The system described here belongs to Opportunity Education Tanzania and its production codebase is not published. The artwork and written content of this page are © 2026 Claytone Curthberth Mhina and are not licensed for reuse without written permission.</sub>
+<sub>Built during my software developer placement at Opportunity Education Tanzania. The system described here belongs to Opportunity Education Tanzania. The artwork and written content of this page are © 2026 Claytone Curthberth Mhina and are not licensed for reuse without written permission.</sub>
