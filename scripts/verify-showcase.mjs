@@ -18,7 +18,8 @@ for (const phrase of required) {
 }
 
 for (const stale of ['Partnership Network & Development Team', 'The product is not a WhatsApp bot',
-  'LRS heartbeat', '## Showcase visuals']) {
+  'LRS heartbeat', '## Showcase visuals', '## Repository', '## Contact',
+  'Maintained implementation:', 'Visual source:']) {
   if (readme.includes(stale)) failures.push(`stale positioning returned: ${stale}`);
 }
 

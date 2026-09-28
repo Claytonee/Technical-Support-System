@@ -71,6 +71,15 @@ function connector(x1, y1, x2, y2, delay = '0s') {
     <circle r="3.5" fill="${C.cyan}"><animateMotion dur="3.6s" begin="${delay}" repeatCount="indefinite" path="M${x1} ${y1}H${x2}"/></circle>`;
 }
 
+function animatedPath(d, { color = C.blue, dot = C.cyan, duration = '3.8s', delay = '0s', arrow = true } = {}) {
+  return `<path d="${d}" fill="none" stroke="${color}" stroke-width="1.3" stroke-dasharray="7 10" opacity=".72"${arrow ? ' marker-end="url(#arrow)"' : ''}>
+    <animate attributeName="stroke-dashoffset" values="34;0" dur="${duration}" begin="${delay}" repeatCount="indefinite"/>
+  </path>
+  <circle r="4" fill="${dot}" stroke="${C.navy}" stroke-width="1.5">
+    <animateMotion dur="${duration}" begin="${delay}" repeatCount="indefinite" path="${d}"/>
+  </circle>`;
+}
+
 function banner() {
   const body = `
     <circle cx="178" cy="145" r="132" fill="url(#glow)"/>
@@ -112,14 +121,16 @@ function intelligence() {
   const body = `
     ${label(52, 57, 'Support intelligence', C.blue)}${text(52, 88, 'AI accelerates diagnosis; approved knowledge and the support workflow remain authoritative', { size: 16, color: C.muted })}
     <g><rect x="52" y="151" width="218" height="150" rx="17" fill="${C.panel}" stroke="${C.blue}"/>${label(79, 183, 'User signal', C.cyan)}${text(79, 222, '“The display turns on,', { size: 18, weight: 650 })}${text(79, 247, 'then loses signal.”', { size: 18, weight: 650 })}${text(79, 278, 'school + device + symptom', { size: 12, color: C.muted })}</g>
-    <path d="M270 226H373" stroke="${C.blue}" opacity=".58" marker-end="url(#arrow)"/>
+    ${animatedPath('M270 226H373', { duration: '2.8s' })}
     <g><circle cx="486" cy="226" r="96" fill="url(#glow)"/><path d="M486 137L563 181V271L486 315L409 271V181Z" fill="${C.panel2}" stroke="url(#signal)" stroke-width="2.3"/><path d="M486 171L534 199V253L486 281L438 253V199Z" fill="none" stroke="${C.cyan}" opacity=".52"/>${label(486, 214, 'Support context', C.cyan, 'middle')}${text(486, 244, 'KNOWLEDGE', { size: 20, weight: 800, anchor: 'middle', spacing: 1 })}${text(486, 267, 'approved + searchable', { size: 12, color: C.muted, anchor: 'middle' })}<circle cx="486" cy="226" r="6" fill="${C.amber}"><animate attributeName="opacity" values=".45;1;.45" dur="2.8s" repeatCount="indefinite"/></circle></g>
-    <path d="M563 190C620 140 655 137 707 137" fill="none" stroke="${C.blue}" marker-end="url(#arrow)"/><path d="M563 262C620 312 655 315 707 315" fill="none" stroke="${C.blue}" marker-end="url(#arrow)"/>
-    <g><rect x="707" y="105" width="222" height="120" rx="16" fill="${C.panel}" stroke="${C.cyan}" stroke-width="1.6"/>${label(735, 138, 'AI assistant', C.cyan)}${text(735, 172, 'Explains the next', { size: 19, weight: 700 })}${text(735, 196, 'safe diagnostic step', { size: 19, weight: 700 })}</g>
-    <g><rect x="707" y="255" width="222" height="120" rx="16" fill="${C.panel}" stroke="${C.green}" stroke-width="1.6"/>${label(735, 288, 'Resource library', C.green)}${text(735, 322, 'Returns manuals, guides', { size: 19, weight: 700 })}${text(735, 346, 'and approved media', { size: 19, weight: 700 })}</g>
-    <path d="M929 165H997V239" fill="none" stroke="${C.blue}" opacity=".66"/><path d="M929 315H997V239" fill="none" stroke="${C.blue}" opacity=".66"/><path d="M997 239H1037" stroke="${C.blue}" marker-end="url(#arrow)"/>
-    <g><rect x="1037" y="166" width="111" height="146" rx="15" fill="${C.panel2}" stroke="${C.amber}" stroke-width="1.6"/>${label(1092, 199, 'Decision', C.amber, 'middle')}${text(1092, 234, 'Continue', { size: 17, weight: 750, anchor: 'middle' })}${text(1092, 257, 'locally', { size: 17, weight: 750, anchor: 'middle' })}${text(1092, 281, 'or report', { size: 13, color: C.muted, anchor: 'middle' })}</g>
-    <path d="M818 392V415H486V330" fill="none" stroke="${C.dim}" stroke-dasharray="5 7"/>${text(652, 409, 'resolved faults strengthen future support content', { size: 12, color: C.muted, anchor: 'middle' })}`;
+    ${animatedPath('M563 190C618 143 650 151 700 151', { duration: '3.4s', delay: '-.7s' })}
+    ${animatedPath('M563 262C618 309 650 322 700 322', { color: C.green, dot: C.green, duration: '3.4s', delay: '-1.6s' })}
+    <g><rect x="700" y="105" width="270" height="126" rx="16" fill="${C.panel}" stroke="${C.cyan}" stroke-width="1.6"/>${label(729, 139, 'AI assistant', C.cyan)}${text(729, 176, 'Explains the next', { size: 18, weight: 700 })}${text(729, 201, 'safe diagnostic step', { size: 18, weight: 700 })}</g>
+    <g><rect x="700" y="252" width="270" height="140" rx="16" fill="${C.panel}" stroke="${C.green}" stroke-width="1.6"/>${label(729, 286, 'Resource library', C.green)}${text(729, 322, 'Returns approved manuals,', { size: 18, weight: 700 })}${text(729, 347, 'guides and support media', { size: 18, weight: 700 })}${text(729, 373, 'searchable by support context', { size: 12, color: C.muted })}</g>
+    ${animatedPath('M970 168H1004V239H1030', { duration: '3s', delay: '-.4s' })}
+    ${animatedPath('M970 322H1004V239H1030', { color: C.green, dot: C.green, duration: '3s', delay: '-1.8s' })}
+    <g><rect x="1030" y="166" width="118" height="146" rx="15" fill="${C.panel2}" stroke="${C.amber}" stroke-width="1.6"/>${label(1089, 199, 'Decision', C.amber, 'middle')}${text(1089, 234, 'Continue', { size: 17, weight: 750, anchor: 'middle' })}${text(1089, 257, 'locally', { size: 17, weight: 750, anchor: 'middle' })}${text(1089, 281, 'or report', { size: 13, color: C.muted, anchor: 'middle' })}</g>
+    ${animatedPath('M1089 330V418H486V330', { color: C.dim, dot: C.green, duration: '7s', delay: '-2s', arrow: false })}${text(760, 411, 'verified resolutions strengthen future support content', { size: 12, color: C.muted, anchor: 'middle' })}`;
   return base(1200, 440, 'Support intelligence', 'The AI assistant and Resource Library use approved support context to guide diagnosis, while users can always continue to the normal fault-reporting workflow.', body);
 }
 
