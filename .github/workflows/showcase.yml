@@ -1,0 +1,23 @@
+name: Verify showcase
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Regenerate diagrams
+        run: node scripts/generate-showcase-visuals.mjs
+      - name: Verify README and visual accessibility
+        run: node scripts/verify-showcase.mjs
+      - name: Ensure generated assets are committed
+        run: git diff --exit-code

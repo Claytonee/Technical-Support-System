@@ -1,45 +1,107 @@
 ![Node.js](https://img.shields.io/badge/Node.js-Express-0f1117?style=flat-square&logo=nodedotjs&logoColor=2dd98a)
 ![MySQL](https://img.shields.io/badge/Database-MySQL%20%2F%20MariaDB-0f1117?style=flat-square&logo=mysql&logoColor=4f7cff)
 ![PWA](https://img.shields.io/badge/PWA-offline--first-0f1117?style=flat-square&logo=pwa&logoColor=36d9cc)
-![RBAC](https://img.shields.io/badge/Security-4--role%20RBAC%20%2B%20MFA-0f1117?style=flat-square&logo=jsonwebtokens&logoColor=9b7dff)
-![Deploy](https://img.shields.io/badge/Production-cPanel%20%C2%B7%20Passenger-0f1117?style=flat-square)
+![Security](https://img.shields.io/badge/Security-MFA%20%2B%20scoped%20RBAC-0f1117?style=flat-square&logo=jsonwebtokens&logoColor=9b7dff)
+![Production](https://img.shields.io/badge/Production-cPanel%20%C2%B7%20Passenger-0f1117?style=flat-square)
 
-# Offline-First School Technical Support & Knowledge System
+# Technical Support System
 
-> A support operating system for Opportunity Education Tanzania's partner schools: help the school solve common faults, capture the ones it cannot solve, and keep one accountable owner from classroom to resolution.
+An offline-first support system that helps schools diagnose, report, route, escalate and resolve technical faults without losing work when the internet is unreliable.
 
-**Status:** in production · **Role:** Software Developer, Partnership Network & Development Team · **2026**
+**Software Engineer case study by Claytone Curthberth Mhina.**
 
-The product is not a WhatsApp bot, SMS gateway, or LRS-monitoring demo. Those are optional adapters. Its core value is a reliable support workflow designed for schools with intermittent connectivity and a small field team covering many sites.
+## The challenge
 
-## The problem it solves
+A fault in a classroom can interrupt learning immediately, but the information needed to resolve it is usually scattered across calls, chat messages and spreadsheets:
 
-A technical fault can interrupt a lesson long before head office learns about it. Phone calls and spreadsheets lose context: who reported it, what was already tried, who owns it, when it became urgent, what equipment is affected, and whether the fix actually worked.
+- the symptoms and their impact;
+- what the teacher or school has already tried;
+- photographs or other evidence;
+- the person currently responsible;
+- the response deadline;
+- the affected school and equipment;
+- the resolution and whether it worked.
 
-This system turns that fragmented process into one operational record and one clear chain of responsibility.
+Weak connectivity adds a harder failure mode: the user can complete a report and lose it before the server receives it—or retry it and create duplicates.
 
-## The core workflow
+The system provides one support record, one ownership chain and one history from the first diagnostic step to verified resolution.
 
-1. **Try the right fix first.** Guided troubleshooting and approved resources help a teacher or school administrator resolve common problems without waiting for travel.
-2. **Report reliably.** If the fault remains, the web app captures symptoms, impact, location, equipment, evidence, and the guide already attempted.
-3. **Keep working offline.** Reports and photographs queue in IndexedDB, then replay as the original multipart request when connectivity returns. A client reference prevents duplicate tickets.
-4. **Route to the nearest capable owner.** A teacher's report starts with their school administrator. Critical faults and school-admin reports reach the assigned field engineer immediately.
-5. **Escalate with context.** The school administrator can escalate to head office with a reason. The system records the owner, timestamp, timeline entry, and in-app notifications.
-6. **Close the loop.** Resolution history, CSAT, recurrence trends, visits, guides, manuals, inventory, warranties, and spares turn completed work into reusable operational knowledge.
+<img src="assets/support-journey.svg" alt="Support journey from diagnosis and reporting through ownership, escalation, resolution and learning" width="100%"/>
 
-## Ownership is a product feature
+## How it helps each user
 
-| Reported by | Initial owner | Why |
-|---|---|---|
-| Teacher | School administrator | The closest person who can inspect the classroom and solve a local issue |
-| Teacher, critical impact | Field engineer, with school notified | Teaching cannot wait for the normal triage step |
-| School administrator | Field engineer | The report has already passed the school level |
+| User | What the system helps them do |
+|---|---|
+| **Teacher** | Follow guided checks, search approved support material, report a fault with evidence, track their own report and rate the outcome |
+| **School administrator** | Triage teacher reports, resolve local issues, manage school context and escalate work that needs field or head-office support |
+| **Field engineer** | See assigned schools and faults, review diagnostic evidence, plan visits, check equipment/spares and record the resolution |
+| **Platform administrator** | Assign ownership, monitor SLA risk, review trends, govern access, audit activity and identify recurring operational problems |
 
-A teacher can report, add evidence, follow their own fault, and rate the outcome. They cannot close or escalate it past their school administrator. Escalation is a dedicated action—not a status value—because it must carry a reason, ownership change, timestamp, audit entry, and notification.
+## Core capabilities
 
-## SLA execution, not an SLA label
+<img src="assets/capability-map.svg" alt="Error Form, Escalation, AI Assistant and Resource Library mapped from user action to system outcome" width="100%"/>
 
-<img src="assets/sla-clock.svg" alt="Four support priorities with resolution targets" width="100%"/>
+### Error Form
+
+The report form captures the information needed to act, not only a title and description:
+
+- school, location and reporter context;
+- category, priority and operational impact;
+- symptoms, affected equipment and steps already attempted;
+- photographs and supporting attachments;
+- the troubleshooting guide used before reporting.
+
+When submitted, the API validates the user's school scope, generates a unique fault code, calculates the SLA due time, chooses the correct initial owner and records the intake channel. A stable client reference makes offline retries idempotent, so a lost response does not create a second fault.
+
+### Escalation
+
+Escalation is a business operation, not a cosmetic status change.
+
+A school administrator supplies a reason and optional context. The system then:
+
+1. moves the fault to platform-level ownership;
+2. assigns the school's field engineer when one is available;
+3. records who escalated it and when;
+4. adds an escalation entry to the fault timeline;
+5. notifies head office and the assigned engineer in-app;
+6. preserves the action in the audit trail.
+
+Teachers cannot bypass the school administrator, and a generic status update cannot imitate an escalation. This prevents a fault from appearing escalated while missing its reason, owner and notifications.
+
+### AI Assistant
+
+The assistant helps a user turn a symptom into an actionable diagnostic path. It uses the support context and approved resources to recommend checks and relevant material instead of acting as a separate source of truth.
+
+Its role is to help the person standing near the equipment:
+
+- clarify the reported symptom;
+- propose safe diagnostic steps in sequence;
+- surface relevant guides and resources;
+- help the user decide whether to continue locally or file a fault.
+
+The assistant is optional. If the model service is unavailable, guides, search, the Resource Library and the normal reporting workflow continue to work.
+
+### Resource Library
+
+The Resource Library gives users one searchable source for approved support knowledge. It supports manuals, documents, images, audio and video stored through Cloudinary.
+
+Resources are useful in three places: self-service before a report, evidence during diagnosis, and reusable guidance after a recurring fault has been understood. Access and write permissions are role-scoped, while the stored metadata makes material searchable by title, type, category and context.
+
+### Offline reporting
+
+The PWA keeps the application shell and support content available on weak or missing connections. If a report cannot reach the API:
+
+1. the request and its attachments are stored in IndexedDB;
+2. images are compressed to a browser storage budget;
+3. the shell shows that work is waiting to sync;
+4. reconnection replays the original multipart request;
+5. the server uses `client_ref` to reject duplicate creation.
+
+Offline mode therefore preserves both the report and its evidence, rather than displaying a success message for data that never reached support.
+
+### Follow-Up and SLA
+
+The Follow-Up Center brings together open, in-progress and escalated faults that need action. Each fault has a priority-based due time:
 
 | Priority | Target |
 |---|---:|
@@ -48,92 +110,92 @@ A teacher can report, add evidence, follow their own fault, and rate the outcome
 | Medium | 72 hours |
 | Low | 168 hours |
 
-The due time is stored when the fault is created. An authenticated scheduled sweep locks each overdue row, processes it once, escalates school-level work to head office, assigns the school's field engineer where available, and creates in-app notifications plus a timeline/audit record. Repeated or overlapping sweeps do not duplicate the escalation.
+An authenticated scheduled sweep processes overdue faults transactionally. Row locking and a processed flag make it idempotent when cron calls overlap. A school-level breach is moved to platform visibility, assigned where possible, written to the timeline and surfaced through in-app notifications. Work already in progress keeps its working state while head office is notified of the breach.
 
-## Built for unreliable connectivity
+### Field operations and asset context
 
-Offline behavior is part of the domain, not a cosmetic PWA badge:
+A fault does not exist separately from the school and equipment around it. School profiles, weekly check-ins, visit planning, tablet/LRS inventory, warranties, suppliers, batches and spare parts give an engineer the context needed to diagnose remotely and arrive prepared when travel is necessary.
 
-- The application shell and support content remain available without a connection.
-- Pending reports are visible outside a single page.
-- Attachments stay with the queued request and images are compressed to a storage budget.
-- Replay preserves the online API contract.
-- A stable `client_ref` makes lost responses and retries idempotent.
+## Fault lifecycle and ownership rules
 
-## Four roles, scoped at both UI and API
+```text
+Teacher report ──> School triage ──> In progress ──> Resolved ──> Feedback
+                         │
+                         └── Escalate with reason ──> Platform / field engineer
 
-<img src="assets/role-matrix.svg" alt="Platform admin, field engineer, school admin and teacher permission matrix" width="100%"/>
+Critical impact ───────────────────> Field engineer immediately
+School-admin report ───────────────> Field engineer immediately
+```
 
-- **Platform admin:** governance, assignment, analytics, security, audit, and system configuration
-- **Field engineer:** assigned schools, remote diagnosis, visits, inventory context, and resolution
-- **School admin:** local triage, teacher management, escalation, and school-level visibility
-- **Teacher:** guided help, own reports, evidence, progress visibility, and feedback
-
-Navigation visibility and route authorization are separate controls. Tenant checks bind school users to their school, teachers to their own reports, and field engineers to assigned schools. MFA, recovery codes, security events, and audit trails protect the human workflow around those permissions.
-
-## Operational knowledge and field work
-
-The system connects support records that are usually separated:
-
-- Guided resolution and a searchable resource library
-- Recurring-fault, response-time, resolution-time, and SLA analytics
-- School health, weekly check-ins, and preventive maintenance
-- Visit planning based on unresolved work and school context
-- Tablet/LRS inventory, warranty dates, suppliers, batches, and spares
-- CSAT owned by the reporter or their school—not by head office
-
-The product goal is fewer disrupted lessons and better fixes. Channel volume is not a success metric.
-
-## Optional adapters
-
-| Adapter | Purpose | Product rule |
-|---|---|---|
-| LRS heartbeat | Detect an installed school server or uplink becoming unreachable | Expand only where an agent is installed and earlier detection improves response time |
-| WhatsApp | Alternate inbound reporting | Use only when schools prefer it and reports retain enough identity and diagnostic context |
-| SMS / USSD | Low-bandwidth intake and alerts | Use where it reaches otherwise excluded users; never make it the main workflow |
-| Email | Best-effort event notification | The in-app record remains authoritative |
-| AI assistant | Resource-grounded support answers | Optional enhancement; approved knowledge remains usable without it |
-
-Missing credentials do not pretend to be working features. Integrations fail closed or degrade to the core in-app workflow, and `/api/health` reports what is actually configured in the running process.
+The lifecycle moves forward. A resolved fault cannot be silently reopened because that would rewrite its SLA and satisfaction history; a recurrence is recorded as a new fault and can be linked through its context. First-response, escalation and resolution timestamps use the database clock so analytics do not mix server time zones.
 
 ## Architecture
 
-```text
-Vanilla JS SPA / PWA
-  ├─ Service Worker + IndexedDB offline queue
-  └─ Role-aware support interface
-             │ HTTPS / JWT
-             ▼
-Node.js + Express API
-  ├─ authentication, MFA, RBAC and tenant scope
-  ├─ fault lifecycle, SLA sweep and audit trail
-  ├─ guided resolution, analytics and field operations
-  └─ optional integration adapters
-             │
-             ├─ MySQL / MariaDB
-             └─ Cloudinary for uploaded evidence and resources
+<img src="assets/system-architecture-v2.svg" alt="School PWA, Express application core, MySQL and Cloudinary architecture with optional adapters" width="100%"/>
+
+| Layer | Implementation |
+|---|---|
+| Frontend | Vanilla JavaScript SPA, hash routing, service worker and IndexedDB |
+| Backend | Node.js 18+, Express and REST APIs |
+| Data | MySQL/MariaDB with additive, replay-safe schema extensions |
+| Authentication | JWT, bcrypt, TOTP MFA, recovery codes and session revocation |
+| Authorization | Four roles plus school, reporter, assignment and delegated-capability scope |
+| Files | Cloudinary-backed evidence and resource storage |
+| AI | AWS Bedrock integration with resource-grounded support context |
+| Production | cPanel/CloudLinux, LiteSpeed/Passenger and local MySQL |
+| Deployment | Signed GitHub webhook, fast-forward-only update, restart and build-aware health check |
+
+Optional WhatsApp, SMS/USSD, email and LRS heartbeat adapters feed the same support domain when configured. They do not replace the web workflow or its ownership rules.
+
+## Engineering decisions
+
+### In-app ownership before external messaging
+
+The fault record and in-app notification are authoritative because external services may be unconfigured, delayed or unavailable. Email, SMS and messaging can extend reach, but they do not decide whether the workflow exists.
+
+### Additive database evolution
+
+Production schema changes add nullable or defaulted fields and replay safely at startup. Destructive changes require a separate migration and recovery decision, reducing the chance that a deploy damages existing support history.
+
+### Capabilities, not trusted browser roles
+
+The interface asks the API what the current user may do. Hiding a navigation link is not authorization; the route independently checks role and tenant scope. Delegated inventory access is re-read on each request, so revocation takes effect immediately.
+
+### Observable deployment state
+
+`GET /api/health` reports the commit loaded by the running process and which optional services are actually configured. Static files on disk are not treated as proof that Passenger restarted successfully.
+
+## Verification
+
+Executable suites cover the behavior that carries the most operational risk:
+
+- role and tenant-access boundaries;
+- teacher → school → field/head-office routing;
+- explicit escalation and forward-only lifecycle transitions;
+- Follow-Up multi-status filtering;
+- offline replay and duplicate protection;
+- transactional, idempotent SLA breach processing;
+- attachment, resource, visit, inventory and analytics workflows;
+- webhook and optional-integration security boundaries.
+
+The focused workflow checks currently pass **4/4** for Follow-Up filtering, **64/64** for the school support chain and **9/9** for SLA breach processing. Verification scripts create scoped fixtures and remove only the records they own.
+
+## Showcase visuals
+
+The diagrams in this README are generated from a dependency-free Node.js script so their copy, colors and layout stay reviewable in source:
+
+```bash
+node scripts/generate-showcase-visuals.mjs
 ```
 
-| Layer | Choice |
-|---|---|
-| Backend | Node.js 18+, Express |
-| Database | MySQL / MariaDB with additive, replay-safe schema extensions |
-| Frontend | Vanilla JavaScript SPA/PWA with hash routing |
-| Offline | Service worker, IndexedDB, multipart replay, duplicate protection |
-| Security | JWT, bcrypt, TOTP MFA, recovery codes, scoped RBAC, security events |
-| Hosting | cPanel/CloudLinux, LiteSpeed/Passenger, MySQL on the same host |
-| Deployment | Signed GitHub webhook, fast-forward-only update, Passenger restart, build-aware health check |
+Static SVG is deliberate: GitHub renders it sharply at any width, keeps it lightweight and exposes useful alternative text. Motion should be reserved for a sequence that cannot be understood in one frame; GitHub-safe animation would be exported as GIF while retaining the SVG source.
 
-## Engineering proof
+## Source
 
-Executable verification covers the role matrix, teacher → school → head-office chain, multi-status Follow-Up query, forward-only lifecycle, offline de-duplication, SLA idempotency, teacher scope, security boundaries, visits, analytics, and optional adapters. Suites create scoped fixtures and remove only the data they own.
+The maintained implementation and its product-priority document are available in [Claytonee/Troubleshooting-System](https://github.com/Claytonee/Troubleshooting-System).
 
-The maintained implementation and current product priorities are in [Claytonee/Troubleshooting-System](https://github.com/Claytonee/Troubleshooting-System).
-
-## Reach me
+## Contact
 
 [![Email](https://img.shields.io/badge/Email-claytonecurth%40gmail.com-4f7cff?style=for-the-badge&labelColor=0f1117&logo=gmail&logoColor=FFAE00)](mailto:claytonecurth@gmail.com)
 
-Happy to walk through the ownership model, offline queue, SLA processing, security boundaries, or field-support workflow.
-
-<sub>Built during my software developer placement at Opportunity Education Tanzania. The system described here belongs to Opportunity Education Tanzania. The artwork and written content of this page are © 2026 Claytone Curthberth Mhina and are not licensed for reuse without written permission.</sub>
+<sub>Software engineering case study by Claytone Curthberth Mhina. The system described here was built for Opportunity Education Tanzania. The artwork and written content of this showcase are © 2026 Claytone Curthberth Mhina.</sub>
